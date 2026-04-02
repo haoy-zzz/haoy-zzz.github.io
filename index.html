@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haoyang Zou | Shanghai Jiao Tong University</title>
+  <meta name="description" content="Haoyang Zou's academic homepage - Ph.D. student working on reasoning, RL, and coding agents">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon-180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #2d3436;
+      --color-text-muted: #636e72;
+      --color-text-light: #95a5a6;
+      --color-accent: #4a6cf7;
+      --color-accent-hover: #3b5de7;
+      --color-border: #e9ecef;
+      --color-card: #f8f9fa;
+      --color-nav-bg: rgba(255, 255, 255, 0.92);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --max-width: 920px;
+      --nav-height: 56px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 24px);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.75;
+      font-size: 16.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--color-accent-hover); }
+    .profile-info .affiliation a,
+    .about-content a,
+    .news-text a,
+    .exp-content a {
+      color: #3a4248;
+      text-decoration: underline;
+      text-decoration-color: rgba(45, 52, 54, 0.18);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.14em;
+    }
+    .profile-info .affiliation a:hover,
+    .about-content a:hover,
+    .news-text a:hover,
+    .exp-content a:hover {
+      color: #111827;
+      text-decoration-color: rgba(17, 24, 39, 0.32);
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      height: var(--nav-height);
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 450;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--color-text); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.2s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    /* ── Profile Header ── */
+    .profile {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 40px 0 28px;
+    }
+    .profile-photo {
+      flex-shrink: 0;
+    }
+    .profile-photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-border);
+      transition: transform 0.3s ease;
+    }
+    .profile-photo img:hover {
+      transform: scale(1.03);
+    }
+    .profile-info {
+      padding-top: 8px;
+    }
+    .profile-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+    .profile-kicker::before {
+      content: '';
+      width: 32px;
+      height: 1.5px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+    .profile-info h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .profile-info .name-cn {
+      font-size: 20px;
+      color: var(--color-text-muted);
+      font-weight: 400;
+      margin-left: 8px;
+    }
+    .profile-info .affiliation {
+      font-size: 17px;
+      color: var(--color-text);
+      margin-top: 10px;
+      line-height: 1.65;
+      font-weight: 500;
+      max-width: 640px;
+    }
+    .profile-lede {
+      margin-top: 12px;
+      max-width: 640px;
+      font-size: 16px;
+      line-height: 1.72;
+      color: var(--color-text-muted);
+    }
+    .social-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: var(--color-card);
+      color: var(--color-text-muted);
+      font-size: 14.5px;
+      font-weight: 450;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .social-links a:hover {
+      color: var(--color-accent);
+      background: #eef2ff;
+      border-color: #c7d2fe;
+    }
+    .social-links a i {
+      font-size: 14px;
+    }
+
+    /* ── Section Styles ── */
+    .section {
+      padding: 20px 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .section:first-of-type {
+      border-top: none;
+    }
+    .section-title {
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      color: var(--color-text);
+    }
+
+    /* ── About Section ── */
+    .about-content {
+      font-size: 16.5px;
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+    .about-lede {
+      max-width: 760px;
+      margin-bottom: 12px;
+      font-family: var(--font-serif);
+      font-size: 25px;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+    }
+    .about-body {
+      max-width: 760px;
+    }
+    .about-content p {
+      margin-bottom: 12px;
+    }
+    .research-interests {
+      margin-top: 18px;
+      padding: 15px 17px;
+      border: 1px solid #edf0f2;
+      border-radius: 12px;
+      background: #fbfbfc;
+    }
+    .research-interests h3 {
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .research-interests ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .research-interests li {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 16px;
+      line-height: 1.58;
+    }
+    .research-interests li:last-child {
+      margin-bottom: 0;
+    }
+    .research-interests li::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #90a0ae;
+      opacity: 0.9;
+    }
+    .research-interests li strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--color-text);
+    }
+
+    /* ── News Section ── */
+    .news-list {
+      list-style: none;
+    }
+    .news-list li {
+      display: flex;
+      gap: 16px;
+      padding: 7px 0;
+      border-bottom: 1px solid #f1f3f4;
+      align-items: baseline;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-date {
+      flex-shrink: 0;
+      width: 100px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--color-text);
+      font-variant-numeric: tabular-nums;
+    }
+    .news-text {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--color-text);
+    }
+    .author-note {
+      margin-left: 6px;
+      font-size: 13px;
+      color: var(--color-text-light);
+      white-space: nowrap;
+    }
+
+    /* ── Publications ── */
+    .pub-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .pub-header .section-title {
+      margin-bottom: 0;
+    }
+    .pub-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-bg);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .pub-toggle:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .pub-toggle.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: white;
+    }
+
+    .pub-item {
+      padding: 14px 0;
+      border-bottom: 1px solid #f1f3f4;
+      transition: opacity 0.3s;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.45;
+      margin-bottom: 7px;
+    }
+    .pub-authors {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .pub-authors .me {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .pub-venue {
+      font-size: 14px;
+      color: var(--color-text-light);
+      margin-bottom: 9px;
+    }
+    .pub-venue .venue-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .venue-preprint {
+      background: #fff3e0;
+      color: #e65100;
+    }
+    .venue-conf {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .pub-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .pub-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      background: var(--color-card);
+      transition: all 0.15s;
+    }
+    .pub-links a:hover {
+      background: #eef2ff;
+      color: var(--color-accent);
+    }
+    .pub-links .gh-stars {
+      vertical-align: middle;
+      height: 18px;
+    }
+    .pub-desc {
+      font-size: 14.5px;
+      color: var(--color-text-muted);
+      margin-top: 9px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .pub-item[data-hidden="true"] {
+      display: none;
+    }
+
+    /* ── Experiences ── */
+    .exp-list {
+      list-style: none;
+    }
+    .exp-item {
+      display: flex;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f3f4;
+      align-items: baseline;
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-date {
+      flex-shrink: 0;
+      width: 160px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .exp-content {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .exp-content strong {
+      font-weight: 600;
+    }
+    .exp-content .exp-role {
+      color: var(--color-text-muted);
+      font-size: 14.5px;
+    }
+
+    /* ── Services ── */
+    .service-text {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--color-border);
+      padding: 28px 0;
+      margin-top: 20px;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+
+    /* ── Mobile Hamburger ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--color-text);
+      padding: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 32px 0 28px;
+      }
+      .profile-photo img {
+        width: 130px;
+        height: 130px;
+      }
+      .profile-info { padding-top: 0; }
+      .profile-kicker { justify-content: center; }
+      .profile-info h1 { font-size: 26px; }
+      .profile-info .affiliation,
+      .profile-lede { max-width: none; }
+      .social-links { justify-content: center; }
+      .section { padding: 28px 0; }
+      .section-title { font-size: 20px; }
+      .about-lede { font-size: 21px; }
+      .research-interests {
+        padding: 14px 14px 16px;
+        text-align: left;
+      }
+      .news-list li { flex-direction: column; gap: 2px; }
+      .news-date { width: auto; }
+      .exp-item { flex-direction: column; gap: 4px; }
+      .exp-date { width: auto; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--color-nav-bg);
+        backdrop-filter: blur(12px);
+        padding: 16px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--color-border);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      .nav-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Haoyang Zou</span>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="site-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Work</a></li>
+      <li><a href="#experiences">Experiences</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Profile Header ── -->
+<div class="container">
+  <div class="profile">
+    <div class="profile-photo">
+      <img src="images/wechat-profile.png" alt="Haoyang Zou">
+    </div>
+    <div class="profile-info">
+      <p class="profile-kicker">THINK, ACT, EVOLVE</p>
+      <h1>Haoyang Zou <span class="name-cn">邹皓阳</span></h1>
+      <p class="affiliation">
+        Ph.D. student at Shanghai Jiao Tong University.
+      </p>
+      <p class="profile-lede">
+        I study how strong reasoning becomes reliable agent behavior, and I like building the full loop from training to real-world systems.
+      </p>
+      <div class="social-links">
+        <a href="mailto:alanzou003@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://scholar.google.com/citations?user=btPmUcoAAAAJ&amp;hl=en"><i class="ai ai-google-scholar"></i> Scholar</a>
+        <a href="https://github.com/haoy-zzz"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://x.com/alanyoung8848"><i class="fab fa-x-twitter"></i> X</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── About ── -->
+  <div class="section" id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <p class="about-lede">
+        I work on models that can think, act, and hold up once they leave controlled environments and enter real work.
+      </p>
+      <div class="about-body">
+        <p>
+          I am a first-year Ph.D. student at <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>, advised by Prof. <a href="http://pfliu.com/">Pengfei Liu</a>, and a research intern at <a href="https://seed.bytedance.com/">ByteDance Seed</a>, where I work closely with <a href="https://yujia-qin.github.io/">Yujia Qin</a>. My research centers on reasoning, reinforcement learning, and agents, with a focus on training foundation models for capable and reliable agent behavior. Before that, I received my B.S. in Artificial Intelligence from <a href="https://www.fudan.edu.cn/">Fudan University</a>.
+        </p>
+      </div>
+      <div class="research-interests">
+        <h3>Research Interests</h3>
+        <ul>
+          <li><strong>Reasoning and Reinforcement Learning for Agents</strong> Studying how agents can plan, adapt, and remain reliable in complex environments.</li>
+          <li><strong>Coding Agents in Practice</strong> Designing coding agents that optimize for real-world usefulness rather than benchmark performance.</li>
+          <li><strong>Self-Improving Agent Systems</strong> Exploring systems whose capability grows through use and interaction.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── News ── -->
+  <div class="section" id="news">
+    <h2 class="section-title">News</h2>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">2026.02</span>
+        <span class="news-text">Released <a href="https://seed.bytedance.com/en/seed2">Seed 2.0</a> as a core contributor.</span>
+      </li>
+      <li>
+        <span class="news-date">2025.12</span>
+        <span class="news-text">Released <a href="https://github.com/ByteDance-Seed/Seed-1.8">Seed 1.8</a> as a core contributor.</span>
+      </li>
+      <li>
+        <span class="news-date">2025.09</span>
+        <span class="news-text">Released the <a href="https://arxiv.org/abs/2509.02544">UI-TARS-2</a> technical report.</span>
+      </li>
+      <li>
+        <span class="news-date">2025.09</span>
+        <span class="news-text">Started my Ph.D. at Shanghai Jiao Tong University.</span>
+      </li>
+      <li>
+        <span class="news-date">2025.06</span>
+        <span class="news-text">Joined <a href="https://seed.bytedance.com/">ByteDance Seed</a> as a research intern.</span>
+      </li>
+      <li>
+        <span class="news-date">2025.06</span>
+        <span class="news-text">Graduated from Fudan University.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Publications ── -->
+  <div class="section" id="publications">
+    <div class="pub-header">
+      <h2 class="section-title" id="pub-title">Selected Work</h2>
+      <button class="pub-toggle" id="pub-toggle" onclick="toggleFullList()">Show All</button>
+    </div>
+
+    <!-- Seed 2.0 -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">Seed 2.0</div>
+      <div class="pub-authors">
+        <strong>ByteDance Seed Team</strong> (Core Contributor)
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-conf">Product Launch, Feb 2026</span></div>
+      <div class="pub-links">
+        <a href="https://seed.bytedance.com/en/seed2"><i class="fas fa-globe"></i> Homepage</a>
+        <a href="https://seed.bytedance.com/en/blog/seed-2-0-official-launch"><i class="fas fa-newspaper"></i> Blog</a>
+        <a href="https://github.com/ByteDance-Seed/Seed2.0"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <div class="pub-desc">As a core contributor, I am <strong>responsible for the coding agent ability</strong> of Seed 2.0, a multimodal foundation model series built for strong agentic performance.</div>
+    </div>
+
+    <!-- Seed 1.8 -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">Seed 1.8</div>
+      <div class="pub-authors">
+        <strong>ByteDance Seed Team</strong> (Core Contributor)
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-conf">Product Launch, Dec 2025</span></div>
+      <div class="pub-links">
+        <a href="https://seed.bytedance.com/en/blog/official-release-of-seed1-8-a-generalized-agentic-model"><i class="fas fa-newspaper"></i> Blog</a>
+        <a href="https://github.com/ByteDance-Seed/Seed-1.8"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <div class="pub-desc">As a core contributor, I am <strong>responsible for the coding agent ability</strong> of Seed 1.8, a generalized agentic model unifying search, code, and GUI abilities in one system.</div>
+    </div>
+
+    <!-- UI-TARS-2 -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">UI-TARS-2: Advancing GUI Agent with Multi-Turn Reinforcement Learning</div>
+      <div class="pub-authors">
+        Haoming Wang, <span class="me">Haoyang Zou</span>, Huatong Song, Jiazhan Feng, Junjie Fang, et al.<span class="author-note">(alphabetical order)</span>
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Tech Report, Sep 2025</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2509.02544"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/ByteDance/UI-TARS"><i class="fab fa-github"></i> Code</a>
+      </div>
+      <div class="pub-desc">A GUI-centered agent trained with multi-turn RL and a data flywheel, reaching SOTA on OSWorld, Mind2Web, and AndroidWorld, and <strong>supporting the Doubao Mobile Assistant</strong>.</div>
+    </div>
+
+    <!-- ToRL -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">ToRL: Scaling Tool-Integrated RL</div>
+      <div class="pub-authors">
+        Xuefeng Li*, <span class="me">Haoyang Zou*</span>, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Mar 2025</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2503.23383"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/GAIR-NLP/ToRL"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/GAIR/ToRL-7B"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Models</a>
+        <a href="https://github.com/GAIR-NLP/ToRL"><img src="https://img.shields.io/github/stars/GAIR-NLP/ToRL?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A tool-integrated RL framework that lets base models acquire tool use through training rather than prompting alone.</div>
+    </div>
+
+    <!-- LIMR -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">LIMR: Less is More for RL Scaling</div>
+      <div class="pub-authors">
+        Xuefeng Li*, <span class="me">Haoyang Zou*</span>, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Feb 2025</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2502.11886"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/GAIR-NLP/LIMR"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/GAIR/LIMR"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Models</a>
+        <a href="https://huggingface.co/datasets/GAIR/LIMR"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Dataset</a>
+        <a href="https://github.com/GAIR-NLP/LIMR"><img src="https://img.shields.io/github/stars/GAIR-NLP/LIMR?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A data selection method showing that better-chosen trajectories can match larger RL runs at a fraction of the scale.</div>
+    </div>
+
+    <!-- O1 Journey Part 2 -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">O1 Replication Journey -- Part 2: Surpassing O1-preview through Simple Distillation, Big Progress or Bitter Lesson?</div>
+      <div class="pub-authors">
+        Zhen Huang*, <span class="me">Haoyang Zou*</span>, Xuefeng Li*, Yixiu Liu*, Yuxiang Zheng*, Ethan Chern*, Shijie Xia*, Yiwei Qin, Weizhe Yuan, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Nov 2024</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2411.16489"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/GAIR-NLP/O1-Journey"><i class="fab fa-github"></i> Code</a>
+        <a href="https://github.com/GAIR-NLP/O1-Journey"><img src="https://img.shields.io/github/stars/GAIR-NLP/O1-Journey?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A distillation study showing that simple pipelines can push open models past o1-preview on targeted reasoning evaluations.</div>
+    </div>
+
+    <!-- O1 Journey Part 1 -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">O1 Replication Journey: A Strategic Progress Report -- Part 1</div>
+      <div class="pub-authors">
+        Yiwei Qin*, Xuefeng Li*, <span class="me">Haoyang Zou*</span>, Yixiu Liu*, Shijie Xia*, Zhen Huang, Yixin Ye, Weizhe Yuan, Hector Liu, Yuanzhi Li, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Oct 2024</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2410.18982"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/GAIR-NLP/O1-Journey"><i class="fab fa-github"></i> Code</a>
+        <a href="https://github.com/GAIR-NLP/O1-Journey"><img src="https://img.shields.io/github/stars/GAIR-NLP/O1-Journey?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">An early progress report documenting what did and did not work while replicating o1-style reasoning behavior.</div>
+    </div>
+
+    <!-- Abel -->
+    <div class="pub-item" data-selected="true">
+      <div class="pub-title">Generative AI for Math: Abel</div>
+      <div class="pub-authors">
+        Ethan Chern*, <span class="me">Haoyang Zou*</span>, Xuefeng Li*, Jiewen Hu*, Kehua Feng, Junlong Li, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Project 2024</span></div>
+      <div class="pub-links">
+        <a href="https://gair-nlp.github.io/abel/"><i class="fas fa-globe"></i> Project</a>
+        <a href="https://github.com/GAIR-NLP/abel"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/GAIR/Abel-7B-002"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Models</a>
+        <a href="https://github.com/GAIR-NLP/abel"><img src="https://img.shields.io/github/stars/GAIR-NLP/abel?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A mathematical reasoning model that reached state-of-the-art results on GSM8K and MATH at the time.</div>
+    </div>
+
+    <!-- Non-selected papers -->
+
+    <!-- Test Time Scaling Survey -->
+    <div class="pub-item" data-selected="false">
+      <div class="pub-title">Generative AI Act II: Test Time Scaling Drives Cognition Engineering</div>
+      <div class="pub-authors">
+        Shijie Xia, Yiwei Qin, Xuefeng Li, Yan Ma, Run-Ze Fan, Steffi Chern, <span class="me">Haoyang Zou</span>, Fan Zhou, Xiangkun Hu, Jiahe Jin, Yanheng He, Yixin Ye, Yixiu Liu, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Apr 2025</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2504.13828"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://github.com/GAIR-NLP/cognition-engineering"><i class="fab fa-github"></i> Code</a>
+        <a href="https://github.com/GAIR-NLP/cognition-engineering"><img src="https://img.shields.io/github/stars/GAIR-NLP/cognition-engineering?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A survey framing test-time scaling as an emerging engineering discipline for reasoning systems.</div>
+    </div>
+
+    <!-- O1 Journey Part 3 -->
+    <div class="pub-item" data-selected="false">
+      <div class="pub-title">O1 Replication Journey -- Part 3: Inference-time Scaling for Medical Reasoning</div>
+      <div class="pub-authors">
+        Zhongzhen Huang*, Gui Geng*, Shengyi Hua*, Zhen Huang*, <span class="me">Haoyang Zou*</span>, Shaoting Zhang, Pengfei Liu, Xiaofan Zhang
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Jan 2025</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2501.06458"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/SPIRAL-MED/Ophiuchus"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/datasets/SPIRAL-MED/o1-journey-Ophiuchus"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Dataset</a>
+        <a href="https://github.com/SPIRAL-MED/Ophiuchus"><img src="https://img.shields.io/github/stars/SPIRAL-MED/Ophiuchus?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">An inference-time scaling study for medical reasoning, focused on where extra computation actually improves clinical problem solving.</div>
+    </div>
+
+    <!-- PC Agent -->
+    <div class="pub-item" data-selected="false">
+      <div class="pub-title">PC Agent: While You Sleep, AI Works -- A Cognitive Journey into Digital World</div>
+      <div class="pub-authors">
+        Yanheng He*, Jiahe Jin*, Shijie Xia, Jiadi Su, Runze Fan, <span class="me">Haoyang Zou</span>, Xiangkun Hu, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Dec 2024</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2412.17589"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/GAIR-NLP/PC-Agent"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/henryhe0123/PC-Agent-E"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Models</a>
+        <a href="https://github.com/GAIR-NLP/PC-Agent"><img src="https://img.shields.io/github/stars/GAIR-NLP/PC-Agent?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A GUI agent project inspired by human cognitive workflows for completing computer tasks end to end.</div>
+    </div>
+
+    <!-- OlympicArena -->
+    <div class="pub-item" data-selected="false">
+      <div class="pub-title">OlympicArena: Benchmarking Multi-discipline Cognitive Reasoning for Superintelligent AI</div>
+      <div class="pub-authors">
+        Zhen Huang, Zengzhi Wang, Shijie Xia, Xuefeng Li, <span class="me">Haoyang Zou</span>, Ruijie Xu, Run-Ze Fan, Lyumanshan Ye, Ethan Chern, Yixin Ye, ... , Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-conf">NeurIPS 2024</span> <span style="font-size: 12px; color: var(--color-text-light);">Datasets &amp; Benchmarks</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2406.12753"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://github.com/GAIR-NLP/OlympicArena"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/datasets/GAIR/OlympicArena"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Dataset</a>
+        <a href="https://gair-nlp.github.io/OlympicArena/"><i class="fas fa-globe"></i> Project</a>
+        <a href="https://github.com/GAIR-NLP/OlympicArena"><img src="https://img.shields.io/github/stars/GAIR-NLP/OlympicArena?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A multimodal benchmark designed to test cross-discipline reasoning at olympiad difficulty.</div>
+    </div>
+
+    <!-- Reformatted Alignment -->
+    <div class="pub-item" data-selected="false">
+      <div class="pub-title">Reformatted Alignment</div>
+      <div class="pub-authors">
+        Run-Ze Fan, Xuefeng Li, <span class="me">Haoyang Zou</span>, Junlong Li, Shwai He, Ethan Chern, Jiewen Hu, Pengfei Liu
+      </div>
+      <div class="pub-venue"><span class="venue-badge venue-preprint">Preprint, Feb 2024</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2402.12219"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="https://github.com/GAIR-NLP/ReAlign"><i class="fab fa-github"></i> Code</a>
+        <a href="https://huggingface.co/datasets/GAIR/ReAlign-GSM8K"><img src="images/huggingface_logo.svg" width="14" style="vertical-align: middle;"> Dataset</a>
+        <a href="https://gair-nlp.github.io/ReAlign/"><i class="fas fa-globe"></i> Project</a>
+        <a href="https://github.com/GAIR-NLP/ReAlign"><img src="https://img.shields.io/github/stars/GAIR-NLP/ReAlign?style=social" class="gh-stars" alt="stars"></a>
+      </div>
+      <div class="pub-desc">A data-centric alignment method that improves model behavior by reformatting responses rather than only scaling data or compute.</div>
+    </div>
+
+  </div>
+
+  <!-- ── Experiences ── -->
+  <div class="section" id="experiences">
+    <h2 class="section-title">Experiences</h2>
+    <ul class="exp-list">
+      <li class="exp-item">
+        <span class="exp-date">2025.06 - Present</span>
+        <div class="exp-content">
+          <strong>Research Intern</strong>, <a href="https://seed.bytedance.com/">ByteDance Seed</a>
+          <div class="exp-role">Focused on coding and GUI agents, working closely with <a href="https://yujia-qin.github.io/">Yujia Qin</a>, and contributing to UI-TARS-2, Seed 1.8, and Seed 2.0 as a core contributor.</div>
+        </div>
+      </li>
+      <li class="exp-item">
+        <span class="exp-date">2025.09 - Present</span>
+        <div class="exp-content">
+          <strong>Ph.D. Student</strong>, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>
+          <div class="exp-role">Computer Science, advised by Prof. <a href="http://pfliu.com/">Pengfei Liu</a>, with a focus on reasoning, reinforcement learning, and agent systems.</div>
+        </div>
+      </li>
+      <li class="exp-item">
+        <span class="exp-date">2021.09 - 2025.06</span>
+        <div class="exp-content">
+          <strong>B.S.</strong>, <a href="https://www.fudan.edu.cn/">Fudan University</a>
+          <div class="exp-role">Artificial Intelligence</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    &copy; 2026 Haoyang Zou &middot; Last updated April 2026
+  </div>
+</footer>
+
+<script>
+let showAll = false;
+function toggleFullList() {
+  showAll = !showAll;
+  const items = document.querySelectorAll('.pub-item');
+  const btn = document.getElementById('pub-toggle');
+  const title = document.getElementById('pub-title');
+  items.forEach(item => {
+    if (showAll) {
+      item.style.display = '';
+    } else {
+      item.style.display = item.getAttribute('data-selected') === 'true' ? '' : 'none';
+    }
+  });
+  btn.classList.toggle('active', showAll);
+  btn.textContent = showAll ? 'Show Selected' : 'Show All';
+  title.textContent = showAll ? 'All Work' : 'Selected Work';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.pub-item').forEach(item => {
+    if (item.getAttribute('data-selected') !== 'true') item.style.display = 'none';
+  });
+});
+
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+function setNavOpen(isOpen) {
+  navLinks.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+navToggle.addEventListener('click', () => {
+  setNavOpen(!navLinks.classList.contains('open'));
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    setNavOpen(false);
+  });
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    setNavOpen(false);
+  }
+});
+</script>
+
+</body>
+</html>
